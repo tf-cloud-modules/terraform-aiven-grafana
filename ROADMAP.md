@@ -18,4 +18,4 @@ This document describes the current status of this project.
 | ❌ | [Add grafana_user_config.privatelink_access]() ||
 | ❌ | [Add grafana_user_config.public_access]() ||
 | ❌ | [Add grafana_user_config.smtp_server]() ||
-| ❌ | [Add examples]() ||
+| ✔ | [Add examples]() ||
