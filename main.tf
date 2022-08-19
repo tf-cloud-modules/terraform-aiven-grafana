@@ -33,6 +33,18 @@ resource "aiven_grafana" "this" {
     user_auto_assign_org             = var.user_auto_assign_org
     user_auto_assign_org_role        = var.user_auto_assign_org_role
     viewers_can_edit                 = var.viewers_can_edit
+
+    public_access {
+      grafana = var.public_access_grafana
+    }
+
+    private_access {
+      grafana = var.private_access_grafana
+    }
+
+    privatelink_access {
+      grafana = var.privatelink_grafana
+    }
   }
 
   dynamic "tag" {

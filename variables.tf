@@ -193,3 +193,21 @@ variable "viewers_can_edit" {
   type        = string
   default     = ""
 }
+
+variable "public_access_grafana" {
+  description = "Allow clients to connect to Grafana from the public internet for service nodes that are in a project VPC or another type of private network."
+  type        = bool
+  default     = false
+}
+
+variable "private_access_grafana" {
+  description = "Allow clients to connect to Grafana with a DNS name that always resolves to the service's private IP addresses."
+  type        = bool
+  default     = false
+}
+
+variable "privatelink_grafana" {
+  description = "Enable Grafana."
+  type        = bool
+  default     = false
+}
