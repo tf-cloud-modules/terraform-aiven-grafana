@@ -211,3 +211,9 @@ variable "privatelink_grafana" {
   type        = bool
   default     = false
 }
+
+variable "auth_azuread" {
+  description = "Azure AD OAuth integration."
+  type        = list(any)
+  default     = []
+}

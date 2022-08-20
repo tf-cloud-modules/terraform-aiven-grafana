@@ -45,8 +45,20 @@ resource "aiven_grafana" "this" {
     privatelink_access {
       grafana = var.privatelink_grafana
     }
-  }
 
+    dynamic "auth_azuread" {
+      for_each = var.auth_azuread
+      content {
+        allow_sign_up   = lookup(auth_azuread.value, "allow_sign_up", null)
+        allowed_domains = lookup(auth_azuread.value, "allowed_domains", null)
+        allowed_groups  = lookup(auth_azuread.value, "allowed_groups", null)
+        auth_url        = lookup(auth_azuread.value, "auth_url", null)
+        client_id       = lookup(auth_azuread.value, "client_id", null)
+        client_secret   = lookup(auth_azuread.value, "client_secret", null)
+        token_url       = lookup(auth_azuread.value, "token_url", null)
+      }
+    }
+  }
   dynamic "tag" {
     for_each = var.tags
     content {
