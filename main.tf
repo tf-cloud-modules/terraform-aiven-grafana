@@ -108,6 +108,19 @@ resource "aiven_grafana" "this" {
         client_secret   = lookup(auth_google.value, "client_secret", null)
       }
     }
+
+    dynamic "date_formats" {
+      for_each = var.date_formats
+      content {
+        default_timezone = lookup(date_formats.value, "default_timezone", null)
+        full_date        = lookup(date_formats.value, "full_date", null)
+        interval_day     = lookup(date_formats.value, "interval_day", null)
+        interval_hour    = lookup(date_formats.value, "interval_hour", null)
+        interval_minute  = lookup(date_formats.value, "interval_minute", null)
+        interval_second  = lookup(date_formats.value, "interval_second", null)
+        interval_year    = lookup(date_formats.value, "interval_year", null)
+      }
+    }
   }
 
   dynamic "tag" {

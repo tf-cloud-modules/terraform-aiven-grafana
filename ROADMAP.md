@@ -12,7 +12,7 @@ This document describes the current status of this project.
 | ✔ | [Add grafana_user_config.auth_github]() ||
 | ✔ | [Add grafana_user_config.auth_gitlab]() ||
 | ✔ | [Add grafana_user_config.auth_google]() ||
-| ❌ | [Add grafana_user_config.date_formats]() ||
+| ✔ | [Add grafana_user_config.date_formats]() ||
 | ❌ | [Add grafana_user_config.external_image_storage]() ||
 | ✔ | [Add grafana_user_config.private_access]() ||
 | ✔ | [Add grafana_user_config.privatelink_access]() ||

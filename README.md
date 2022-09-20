@@ -58,6 +58,7 @@ No modules.
 | <a name="input_dashboards_versions_to_keep"></a> [dashboards\_versions\_to\_keep](#input\_dashboards\_versions\_to\_keep) | Dashboard versions to keep per dashboard. | `string` | `""` | no |
 | <a name="input_dataproxy_send_user_header"></a> [dataproxy\_send\_user\_header](#input\_dataproxy\_send\_user\_header) | Send 'X-Grafana-User' header to data source. | `string` | `""` | no |
 | <a name="input_dataproxy_timeout"></a> [dataproxy\_timeout](#input\_dataproxy\_timeout) | Timeout for data proxy requests in seconds. | `string` | `""` | no |
+| <a name="input_date_formats"></a> [date\_formats](#input\_date\_formats) | Grafana date format specifications. | `list(any)` | `[]` | no |
 | <a name="input_disable_gravatar"></a> [disable\_gravatar](#input\_disable\_gravatar) | Set to true to disable gravatar. Defaults to false (gravatar is enabled). | `string` | `""` | no |
 | <a name="input_editors_can_admin"></a> [editors\_can\_admin](#input\_editors\_can\_admin) | Editors can manage folders, teams and dashboards created by them. | `string` | `""` | no |
 | <a name="input_google_analytics_ua_id"></a> [google\_analytics\_ua\_id](#input\_google\_analytics\_ua\_id) | Google Analytics ID. | `string` | `""` | no |

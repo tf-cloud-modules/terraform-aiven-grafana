@@ -241,3 +241,9 @@ variable "auth_google" {
   type        = list(any)
   default     = []
 }
+
+variable "date_formats" {
+  description = "Grafana date format specifications."
+  type        = list(any)
+  default     = []
+}
