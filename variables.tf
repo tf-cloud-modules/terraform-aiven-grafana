@@ -259,3 +259,9 @@ variable "smtp_server" {
   type        = list(any)
   default     = []
 }
+
+variable "service_integrations" {
+  description = "Service integrations to specify when creating a service."
+  type        = list(any)
+  default     = []
+}
