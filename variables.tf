@@ -217,3 +217,9 @@ variable "auth_azuread" {
   type        = list(any)
   default     = []
 }
+
+variable "auth_github" {
+  description = "Github Auth integration."
+  type        = list(any)
+  default     = []
+}

@@ -8,7 +8,7 @@ This document describes the current status of this project.
 | ✔ | [Set up basic module features]() || 
 | ✔ | [Add grafana_user_config]() ||
 | ✔ | [Add grafana_user_config.auth_azuread]() ||
-| ❌ | [Add grafana_user_config.auth_generic_oauth]() ||
+| ✔ | [Add grafana_user_config.auth_generic_oauth]() ||
 | ❌ | [Add grafana_user_config.auth_github]() ||
 | ❌ | [Add grafana_user_config.auth_gitlab]() ||
 | ❌ | [Add grafana_user_config.auth_google]() ||

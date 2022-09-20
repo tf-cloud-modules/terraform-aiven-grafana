@@ -58,6 +58,17 @@ resource "aiven_grafana" "this" {
         token_url       = lookup(auth_azuread.value, "token_url", null)
       }
     }
+
+    dynamic "auth_github" {
+      for_each = var.auth_github
+      content {
+        allow_sign_up         = lookup(auth_github.value, "allow_sign_up", null)
+        allowed_organizations = lookup(auth_github.value, "allowed_organizations", null)
+        client_id             = lookup(auth_github.value, "client_id", null)
+        client_secret         = lookup(auth_github.value, "client_secret", null)
+        team_ids              = lookup(auth_github.value, "team_ids", null)
+      }
+    }
   }
   dynamic "tag" {
     for_each = var.tags
