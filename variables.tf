@@ -235,3 +235,9 @@ variable "auth_gitlab" {
   type        = list(any)
   default     = []
 }
+
+variable "auth_google" {
+  description = "Google Auth integration."
+  type        = list(any)
+  default     = []
+}

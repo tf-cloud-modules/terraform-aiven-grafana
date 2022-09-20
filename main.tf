@@ -98,6 +98,16 @@ resource "aiven_grafana" "this" {
         token_url      = lookup(auth_gitlab.value, "token_url", null)
       }
     }
+
+    dynamic "auth_google" {
+      for_each = var.auth_google
+      content {
+        allow_sign_up   = lookup(auth_google.value, "allow_sign_up", null)
+        allowed_domains = lookup(auth_google.value, "allowed_domains", null)
+        client_id       = lookup(auth_google.value, "client_id", null)
+        client_secret   = lookup(auth_google.value, "client_secret", null)
+      }
+    }
   }
 
   dynamic "tag" {

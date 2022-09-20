@@ -49,6 +49,7 @@ No modules.
 | <a name="input_auth_generic_oauth"></a> [auth\_generic\_oauth](#input\_auth\_generic\_oauth) | Generic OAuth integration. | `list(any)` | `[]` | no |
 | <a name="input_auth_github"></a> [auth\_github](#input\_auth\_github) | Github Auth integration. | `list(any)` | `[]` | no |
 | <a name="input_auth_gitlab"></a> [auth\_gitlab](#input\_auth\_gitlab) | GitLab Auth integration. | `list(any)` | `[]` | no |
+| <a name="input_auth_google"></a> [auth\_google](#input\_auth\_google) | Google Auth integration. | `list(any)` | `[]` | no |
 | <a name="input_cloud_name"></a> [cloud\_name](#input\_cloud\_name) | Defines where the cloud provider and region where the service is hosted in. | `string` | `"aws-us-east-1"` | no |
 | <a name="input_cookie_samesite"></a> [cookie\_samesite](#input\_cookie\_samesite) | Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value. | `string` | `""` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if resources should be created. | `bool` | `true` | no |
