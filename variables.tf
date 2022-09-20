@@ -247,3 +247,9 @@ variable "date_formats" {
   type        = list(any)
   default     = []
 }
+
+variable "external_image_storage" {
+  description = "External image store settings."
+  type        = list(any)
+  default     = []
+}

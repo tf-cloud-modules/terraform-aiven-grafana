@@ -121,6 +121,16 @@ resource "aiven_grafana" "this" {
         interval_year    = lookup(date_formats.value, "interval_year", null)
       }
     }
+
+    dynamic "external_image_storage" {
+      for_each = var.external_image_storage
+      content {
+        access_key = lookup(external_image_storage.value, "access_key", null)
+        bucket_url = lookup(external_image_storage.value, "bucket_url", null)
+        provider   = lookup(external_image_storage.value, "provider", null)
+        secret_key = lookup(external_image_storage.value, "secret_key", null)
+      }
+    }
   }
 
   dynamic "tag" {

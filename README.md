@@ -61,6 +61,7 @@ No modules.
 | <a name="input_date_formats"></a> [date\_formats](#input\_date\_formats) | Grafana date format specifications. | `list(any)` | `[]` | no |
 | <a name="input_disable_gravatar"></a> [disable\_gravatar](#input\_disable\_gravatar) | Set to true to disable gravatar. Defaults to false (gravatar is enabled). | `string` | `""` | no |
 | <a name="input_editors_can_admin"></a> [editors\_can\_admin](#input\_editors\_can\_admin) | Editors can manage folders, teams and dashboards created by them. | `string` | `""` | no |
+| <a name="input_external_image_storage"></a> [external\_image\_storage](#input\_external\_image\_storage) | External image store settings. | `list(any)` | `[]` | no |
 | <a name="input_google_analytics_ua_id"></a> [google\_analytics\_ua\_id](#input\_google\_analytics\_ua\_id) | Google Analytics ID. | `string` | `""` | no |
 | <a name="input_ip_filter"></a> [ip\_filter](#input\_ip\_filter) | IP filter. | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | <a name="input_maintenance_window_dow"></a> [maintenance\_window\_dow](#input\_maintenance\_window\_dow) | Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc. | `string` | `"thursday"` | no |
