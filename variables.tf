@@ -253,3 +253,9 @@ variable "external_image_storage" {
   type        = list(any)
   default     = []
 }
+
+variable "smtp_server" {
+  description = "SMTP server settings."
+  type        = list(any)
+  default     = []
+}

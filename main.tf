@@ -131,6 +131,20 @@ resource "aiven_grafana" "this" {
         secret_key = lookup(external_image_storage.value, "secret_key", null)
       }
     }
+
+    dynamic "smtp_server" {
+      for_each = var.smtp_server
+      content {
+        from_address    = lookup(smtp_server.value, "from_address", null)
+        from_name       = lookup(smtp_server.value, "from_name", null)
+        host            = lookup(smtp_server.value, "host", null)
+        password        = lookup(smtp_server.value, "password", null)
+        port            = lookup(smtp_server.value, "port", null)
+        skip_verify     = lookup(smtp_server.value, "skip_verify", null)
+        starttls_policy = lookup(smtp_server.value, "starttls_policy", null)
+        username        = lookup(smtp_server.value, "username", null)
+      }
+    }
   }
 
   dynamic "tag" {
