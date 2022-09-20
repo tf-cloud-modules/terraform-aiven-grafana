@@ -46,6 +46,7 @@ No modules.
 | <a name="input_alerting_nodata_or_nullvalues"></a> [alerting\_nodata\_or\_nullvalues](#input\_alerting\_nodata\_or\_nullvalues) | Default value for 'no data or null values' for new alerting rules. | `string` | `""` | no |
 | <a name="input_allow_embedding"></a> [allow\_embedding](#input\_allow\_embedding) | Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking. | `string` | `""` | no |
 | <a name="input_auth_azuread"></a> [auth\_azuread](#input\_auth\_azuread) | Azure AD OAuth integration. | `list(any)` | `[]` | no |
+| <a name="input_auth_generic_oauth"></a> [auth\_generic\_oauth](#input\_auth\_generic\_oauth) | Generic OAuth integration. | `list(any)` | `[]` | no |
 | <a name="input_auth_github"></a> [auth\_github](#input\_auth\_github) | Github Auth integration. | `list(any)` | `[]` | no |
 | <a name="input_cloud_name"></a> [cloud\_name](#input\_cloud\_name) | Defines where the cloud provider and region where the service is hosted in. | `string` | `"aws-us-east-1"` | no |
 | <a name="input_cookie_samesite"></a> [cookie\_samesite](#input\_cookie\_samesite) | Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value. | `string` | `""` | no |

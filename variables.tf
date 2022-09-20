@@ -218,6 +218,12 @@ variable "auth_azuread" {
   default     = []
 }
 
+variable "auth_generic_oauth" {
+  description = "Generic OAuth integration."
+  type        = list(any)
+  default     = []
+}
+
 variable "auth_github" {
   description = "Github Auth integration."
   type        = list(any)

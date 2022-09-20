@@ -59,6 +59,22 @@ resource "aiven_grafana" "this" {
       }
     }
 
+    dynamic "auth_generic_oauth" {
+      for_each = var.auth_generic_oauth
+      content {
+        allow_sign_up         = lookup(auth_generic_oauth.value, "allow_sign_up", null)
+        allowed_domains       = lookup(auth_generic_oauth.value, "allowed_domains", null)
+        allowed_organizations = lookup(auth_generic_oauth.value, "allowed_organizations", null)
+        api_url               = lookup(auth_generic_oauth.value, "api_url", null)
+        auth_url              = lookup(auth_generic_oauth.value, "auth_url", null)
+        client_id             = lookup(auth_generic_oauth.value, "client_id", null)
+        client_secret         = lookup(auth_generic_oauth.value, "client_secret", null)
+        name                  = lookup(auth_generic_oauth.value, "name", null)
+        scopes                = lookup(auth_generic_oauth.value, "scopes", null)
+        token_url             = lookup(auth_generic_oauth.value, "token_url", null)
+      }
+    }
+
     dynamic "auth_github" {
       for_each = var.auth_github
       content {
