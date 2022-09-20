@@ -229,3 +229,9 @@ variable "auth_github" {
   type        = list(any)
   default     = []
 }
+
+variable "auth_gitlab" {
+  description = "GitLab Auth integration."
+  type        = list(any)
+  default     = []
+}

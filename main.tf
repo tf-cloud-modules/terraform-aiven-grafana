@@ -85,7 +85,21 @@ resource "aiven_grafana" "this" {
         team_ids              = lookup(auth_github.value, "team_ids", null)
       }
     }
+
+    dynamic "auth_gitlab" {
+      for_each = var.auth_gitlab
+      content {
+        allow_sign_up  = lookup(auth_gitlab.value, "allow_sign_up", null)
+        allowed_groups = lookup(auth_gitlab.value, "allowed_groups", null)
+        api_url        = lookup(auth_gitlab.value, "api_url", null)
+        auth_url       = lookup(auth_gitlab.value, "auth_url", null)
+        client_id      = lookup(auth_gitlab.value, "client_id", null)
+        client_secret  = lookup(auth_gitlab.value, "client_secret", null)
+        token_url      = lookup(auth_gitlab.value, "token_url", null)
+      }
+    }
   }
+
   dynamic "tag" {
     for_each = var.tags
     content {
