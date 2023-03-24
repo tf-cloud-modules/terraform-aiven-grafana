@@ -64,134 +64,128 @@ variable "termination_protection" {
 
 variable "alerting_enabled" {
   description = "Enable or disable Grafana alerting functionality."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "alerting_error_or_timeout" {
   description = "Default error or timeout setting for new alerting rules."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "alerting_max_annotations_to_keep" {
   description = "Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations."
-  type        = string
-  default     = ""
+  type        = number
+  default     = null
 }
 
 variable "alerting_nodata_or_nullvalues" {
   description = "Default value for 'no data or null values' for new alerting rules."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "allow_embedding" {
   description = "Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "cookie_samesite" {
   description = "Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "custom_domain" {
   description = "Custom domain."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "dashboards_min_refresh_interval" {
   description = "Minimum refresh interval."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "dashboards_versions_to_keep" {
   description = "Dashboard versions to keep per dashboard."
-  type        = string
-  default     = ""
+  type        = number
+  default     = null
 }
 
 variable "dataproxy_send_user_header" {
   description = "Send 'X-Grafana-User' header to data source."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "dataproxy_timeout" {
   description = "Timeout for data proxy requests in seconds."
-  type        = string
-  default     = ""
+  type        = number
+  default     = null
 }
 
 variable "disable_gravatar" {
-  description = " Set to true to disable gravatar. Defaults to false (gravatar is enabled)."
-  type        = string
-  default     = ""
+  description = "Set to true to disable gravatar. Defaults to false (gravatar is enabled)."
+  type        = bool
+  default     = null
 }
 
 variable "editors_can_admin" {
   description = "Editors can manage folders, teams and dashboards created by them."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "google_analytics_ua_id" {
   description = "Google Analytics ID."
   type        = string
-  default     = ""
-}
-
-variable "ip_filter" {
-  description = "IP filter."
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default     = null
 }
 
 variable "metrics_enabled" {
   description = "Enable Grafana /metrics endpoint."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "project_to_fork_from" {
   description = "Name of another project to fork a service from."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "recovery_basebackup_name" {
   description = "Name of the basebackup to restore in forked service."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "service_to_fork_from" {
   description = "Name of another service to fork from."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "user_auto_assign_org" {
   description = "Auto-assign new users on signup to main organization."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "user_auto_assign_org_role" {
   description = "Set role for new signups."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "viewers_can_edit" {
   description = "Users with view-only permission can edit but not save dashboards."
-  type        = string
-  default     = ""
+  type        = bool
+  default     = null
 }
 
 variable "public_access_grafana" {
@@ -264,4 +258,14 @@ variable "service_integrations" {
   description = "Service integrations to specify when creating a service."
   type        = list(any)
   default     = []
+}
+
+variable "ip_filter_object" {
+  description = "Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'."
+  type        = list(any)
+  default = [
+    {
+      network = "0.0.0.0/0"
+    }
+  ]
 }
