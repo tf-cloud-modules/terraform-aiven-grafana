@@ -25,7 +25,6 @@ resource "aiven_grafana" "this" {
     disable_gravatar                 = var.disable_gravatar
     editors_can_admin                = var.editors_can_admin
     google_analytics_ua_id           = var.google_analytics_ua_id
-    ip_filter                        = var.ip_filter
     metrics_enabled                  = var.metrics_enabled
     project_to_fork_from             = var.project_to_fork_from
     recovery_basebackup_name         = var.recovery_basebackup_name
@@ -33,6 +32,14 @@ resource "aiven_grafana" "this" {
     user_auto_assign_org             = var.user_auto_assign_org
     user_auto_assign_org_role        = var.user_auto_assign_org_role
     viewers_can_edit                 = var.viewers_can_edit
+
+    dynamic "ip_filter_object" {
+      for_each = var.ip_filter_object
+      content {
+        network     = lookup(ip_filter_object.value, "network")
+        description = lookup(ip_filter_object.value, "description", null)
+      }
+    }
 
     public_access {
       grafana = var.public_access_grafana
