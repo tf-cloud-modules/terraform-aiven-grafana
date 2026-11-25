@@ -39,6 +39,12 @@ variable "project_vpc_id" {
   default     = null
 }
 
+variable "cmk_id" {
+  description = "UUID of the Customer Managed Key (CMK) used to apply bring your own key (BYOK) encryption to this service's data at rest."
+  type        = string
+  default     = null
+}
+
 variable "static_ips" {
   description = "Static IPs that are going to be associated with this service."
   type        = list(string)
@@ -52,6 +58,12 @@ variable "service_name" {
 
 variable "tags" {
   description = "List of the service tags."
+  type        = list(any)
+  default     = []
+}
+
+variable "tech_emails" {
+  description = "List of technical contact email addresses for the service."
   type        = list(any)
   default     = []
 }
@@ -86,6 +98,12 @@ variable "alerting_nodata_or_nullvalues" {
   default     = null
 }
 
+variable "unified_alerting_enabled" {
+  description = "Enable or disable Grafana unified alerting functionality. Enabled by default; any legacy alerts are migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true."
+  type        = bool
+  default     = null
+}
+
 variable "allow_embedding" {
   description = "Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking."
   type        = bool
@@ -101,6 +119,12 @@ variable "cookie_samesite" {
 variable "custom_domain" {
   description = "Custom domain."
   type        = string
+  default     = null
+}
+
+variable "dashboard_scenes_enabled" {
+  description = "Render dashboards with the Scenes Library. Has no effect with Grafana 11 and onward, where dashboards are rendered with the Scenes Library by default."
+  type        = bool
   default     = null
 }
 
@@ -146,8 +170,26 @@ variable "google_analytics_ua_id" {
   default     = null
 }
 
+variable "grafana_version" {
+  description = "Grafana major version. Enum: `11`, `12`, and newer."
+  type        = string
+  default     = null
+}
+
 variable "metrics_enabled" {
   description = "Enable Grafana /metrics endpoint."
+  type        = bool
+  default     = null
+}
+
+variable "metrics_disable_total_stats" {
+  description = "Do not collect the grafana_stat_total_* and grafana_stat_totals_* metrics, which require periodic database queries. Defaults to true, unless metrics_enabled is set."
+  type        = bool
+  default     = null
+}
+
+variable "oauth_allow_insecure_email_lookup" {
+  description = "Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches."
   type        = bool
   default     = null
 }
@@ -161,6 +203,12 @@ variable "project_to_fork_from" {
 variable "recovery_basebackup_name" {
   description = "Name of the basebackup to restore in forked service."
   type        = string
+  default     = null
+}
+
+variable "service_log" {
+  description = "Store logs for the service so that they are available in the HTTP API and console."
+  type        = bool
   default     = null
 }
 
@@ -184,6 +232,12 @@ variable "user_auto_assign_org_role" {
 
 variable "viewers_can_edit" {
   description = "Users with view-only permission can edit but not save dashboards."
+  type        = bool
+  default     = null
+}
+
+variable "wal" {
+  description = "Enable Write-Ahead Logging. The default value is false (disabled)."
   type        = bool
   default     = null
 }
