@@ -1,6 +1,7 @@
 resource "aiven_grafana" "this" {
   count                   = var.create ? 1 : 0
   cloud_name              = var.cloud_name
+  cmk_id                  = var.cmk_id
   maintenance_window_dow  = var.maintenance_window_dow
   maintenance_window_time = var.maintenance_window_time
   plan                    = var.plan
@@ -11,27 +12,34 @@ resource "aiven_grafana" "this" {
   termination_protection  = var.termination_protection
 
   grafana_user_config {
-    alerting_enabled                 = var.alerting_enabled
-    alerting_error_or_timeout        = var.alerting_error_or_timeout
-    alerting_max_annotations_to_keep = var.alerting_max_annotations_to_keep
-    alerting_nodata_or_nullvalues    = var.alerting_nodata_or_nullvalues
-    allow_embedding                  = var.allow_embedding
-    cookie_samesite                  = var.cookie_samesite
-    custom_domain                    = var.custom_domain
-    dashboards_min_refresh_interval  = var.dashboards_min_refresh_interval
-    dashboards_versions_to_keep      = var.dashboards_versions_to_keep
-    dataproxy_send_user_header       = var.dataproxy_send_user_header
-    dataproxy_timeout                = var.dataproxy_timeout
-    disable_gravatar                 = var.disable_gravatar
-    editors_can_admin                = var.editors_can_admin
-    google_analytics_ua_id           = var.google_analytics_ua_id
-    metrics_enabled                  = var.metrics_enabled
-    project_to_fork_from             = var.project_to_fork_from
-    recovery_basebackup_name         = var.recovery_basebackup_name
-    service_to_fork_from             = var.service_to_fork_from
-    user_auto_assign_org             = var.user_auto_assign_org
-    user_auto_assign_org_role        = var.user_auto_assign_org_role
-    viewers_can_edit                 = var.viewers_can_edit
+    alerting_enabled                  = var.alerting_enabled
+    alerting_error_or_timeout         = var.alerting_error_or_timeout
+    alerting_max_annotations_to_keep  = var.alerting_max_annotations_to_keep
+    alerting_nodata_or_nullvalues     = var.alerting_nodata_or_nullvalues
+    allow_embedding                   = var.allow_embedding
+    cookie_samesite                   = var.cookie_samesite
+    custom_domain                     = var.custom_domain
+    dashboard_scenes_enabled          = var.dashboard_scenes_enabled
+    dashboards_min_refresh_interval   = var.dashboards_min_refresh_interval
+    dashboards_versions_to_keep       = var.dashboards_versions_to_keep
+    dataproxy_send_user_header        = var.dataproxy_send_user_header
+    dataproxy_timeout                 = var.dataproxy_timeout
+    disable_gravatar                  = var.disable_gravatar
+    editors_can_admin                 = var.editors_can_admin
+    google_analytics_ua_id            = var.google_analytics_ua_id
+    grafana_version                   = var.grafana_version
+    metrics_disable_total_stats       = var.metrics_disable_total_stats
+    metrics_enabled                   = var.metrics_enabled
+    oauth_allow_insecure_email_lookup = var.oauth_allow_insecure_email_lookup
+    project_to_fork_from              = var.project_to_fork_from
+    recovery_basebackup_name          = var.recovery_basebackup_name
+    service_log                       = var.service_log
+    service_to_fork_from              = var.service_to_fork_from
+    unified_alerting_enabled          = var.unified_alerting_enabled
+    user_auto_assign_org              = var.user_auto_assign_org
+    user_auto_assign_org_role         = var.user_auto_assign_org_role
+    viewers_can_edit                  = var.viewers_can_edit
+    wal                               = var.wal
 
     dynamic "ip_filter_object" {
       for_each = var.ip_filter_object
@@ -74,11 +82,13 @@ resource "aiven_grafana" "this" {
         allowed_organizations = lookup(auth_generic_oauth.value, "allowed_organizations", null)
         api_url               = lookup(auth_generic_oauth.value, "api_url", null)
         auth_url              = lookup(auth_generic_oauth.value, "auth_url", null)
+        auto_login            = lookup(auth_generic_oauth.value, "auto_login", null)
         client_id             = lookup(auth_generic_oauth.value, "client_id", null)
         client_secret         = lookup(auth_generic_oauth.value, "client_secret", null)
         name                  = lookup(auth_generic_oauth.value, "name", null)
         scopes                = lookup(auth_generic_oauth.value, "scopes", null)
         token_url             = lookup(auth_generic_oauth.value, "token_url", null)
+        use_refresh_token     = lookup(auth_generic_oauth.value, "use_refresh_token", null)
       }
     }
 
@@ -87,8 +97,10 @@ resource "aiven_grafana" "this" {
       content {
         allow_sign_up         = lookup(auth_github.value, "allow_sign_up", null)
         allowed_organizations = lookup(auth_github.value, "allowed_organizations", null)
+        auto_login            = lookup(auth_github.value, "auto_login", null)
         client_id             = lookup(auth_github.value, "client_id", null)
         client_secret         = lookup(auth_github.value, "client_secret", null)
+        skip_org_role_sync    = lookup(auth_github.value, "skip_org_role_sync", null)
         team_ids              = lookup(auth_github.value, "team_ids", null)
       }
     }
@@ -167,6 +179,13 @@ resource "aiven_grafana" "this" {
     content {
       key   = lookup(tag.value, "key", null)
       value = lookup(tag.value, "value", null)
+    }
+  }
+
+  dynamic "tech_emails" {
+    for_each = var.tech_emails
+    content {
+      email = lookup(tech_emails.value, "email", null)
     }
   }
 }
